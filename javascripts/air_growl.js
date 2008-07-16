@@ -1,4 +1,4 @@
-AirGrowl = (function () {
+AirGrowl.growl = (function () {
     var publicObj = {};
     
     
