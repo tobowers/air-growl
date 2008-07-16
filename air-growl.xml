@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<application xmlns="http://ns.adobe.com/air/application/1.1">
+    <id>com.motionbox.InfinityUploader</id>
+    <version>0.1</version>
+    <name>Air Growl</name>
+    <filename>AirGrowl</filename>
+    <icon>
+      <image16x16>icons/16x16.png</image16x16>
+      <image32x32>icons/32x32.png</image32x32>   
+      <image48x48>icons/48x48.png</image48x48>
+      <image128x128>icons/128x128.png</image128x128>
+    </icon>
+    <initialWindow>
+        <content>UploadShell.html</content>
+        <visible>true</visible>
+        <resizable>true</resizable>
+        <width>400</width>
+        <height>600</height>
+    </initialWindow>
+    <allowBrowserInvocation>true</allowBrowserInvocation>
+</application>
