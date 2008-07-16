@@ -13,58 +13,9 @@ window.htmlLoader.addEventListener(window.runtime.flash.events.HTMLUncaughtScrip
 
 //]]>
 </script>
-<!-- acompc generates Upload.swc which is a zip that contains library.swf which must be extracted -->
-<script type="application/x-shockwave-flash" src="lib/Upload.swf" />
-<script type="application/x-shockwave-flash" src="lib/servicemonitor.swf" />
-
-<script>
-var AIRIntrospectorConfig = new Object();
-AIRIntrospectorConfig.wrapColumns = 100;
-AIRIntrospectorConfig.debuggerKey = 118; //F7
-</script>
-<!-- TO BE REMOVED FOR PRODUCTION -->
-<script type="text/javascript" src="javascript/AIRIntrospector.js" />
-
-<script type="text/javascript" src="javascript/aliases.js"/>
-<script type="text/javascript" src="javascript/prototype.js"/>
-
-<script type="text/javascript" src="javascript/constants.js"/>
-<script type="text/javascript" src="javascript/bridge.js"/>
-
-<script type="text/javascript" src="javascript/store.js"/>
-<script type="text/javascript" src="javascript/application.js"/>
-<script type="text/javascript" src="javascript/event_handler.js"/>
-
-<script type="text/javascript" src="javascript/drag_and_drop.js"/>
-
-
-<script type="text/javascript" src="javascript/slice.js"/>
-
-<script type="text/javascript" src="javascript/network_monitor.js"/>
-
-<link rel="stylesheet" href="styles/000_reset-fonts-grids.css" />
-<link rel="stylesheet" href="styles/001_typography.css">
-<link rel="stylesheet" href="styles/application.css">
-<link rel="stylesheet" href="styles/offline.css">
 
 </head>
-<body class="mbx offline">
-  <div class="online">
-	  <iframe id="uploadApp" src="http://localhost:3000/uploads/"
-	  	ondominitialize="Bridge.engageParentSandboxBridge(this)"
-	  	width="100%" height="90%" ></iframe>
-	  <h1>Drag and Drop your video files here</h1>
-	</div>
-	<div class="offline">
-	  <div id="doc3" class="desktop_uploader yui-t7">
-	    <div id="bd">
-	      <div class=".bd">
-	        <div id="yui-main">
-	          <h1>You have to be online to use the uploader</h1>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+<body class="air-growl">
+
 </body>
 </html>
