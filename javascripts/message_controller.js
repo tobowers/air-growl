@@ -4,20 +4,10 @@ AirGrowl.MessageController = MBX.JsController.create("Message", {
     onInstanceCreate: function (message) {
         this.renderNothing = true;
         
-        var populateWindow = function () {
-            var content = win.window.document.getElementById("content");
-            AirGrowl.log('populating');
-            AirGrowl.log(win.loaded);
-            AirGrowl.log(content);
-            AirGrowl.log(MBX.JsTemplate.render('message', message).toString());
-            content.appendChild(MBX.JsTemplate.render('message', message));
-        };
-        
-        var win = AirGrowl.Window.create().get('nativeWindow');
-        win.addEventListener(air.Event.COMPLETE, populateWindow);
-        AirGrowl.log(win);
-        AirGrowl.log(win.loaded);
-
+        var win = AirGrowl.Window.create();
+        win.set('content', MBX.JsTemplate.render('message', message));
+        message.set('window', win);
+        win.set('message', message);
     }
     
 });
