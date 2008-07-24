@@ -21,14 +21,8 @@ AirGrowl.Window = (function () {
         var windowBounds = new air.Rectangle((windowRight() - width), 0, width, height);
         newHTMLLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
         newHTMLLoader.load(new air.URLRequest("blank_window.html"));
-        return newHTMLLoader.window;
+        return newHTMLLoader;
     };
-    
-    self.debug = function () {
-        AirGrowl.log(windowRight());
-        AirGrowl.log(windowTop());
-    }
     
     return self;
 })();
-
