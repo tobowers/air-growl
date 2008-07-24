@@ -6,10 +6,10 @@
     <filename>AirGrowl</filename>
     <initialWindow>
         <content>air-growl.html</content>
-        <visible>true</visible>
+        <visible>false</visible>
         <resizable>true</resizable>
-        <width>400</width>
-        <height>600</height>
+        <width>300</width>
+        <height>200</height>
     </initialWindow>
     <allowBrowserInvocation>true</allowBrowserInvocation>
 </application>
