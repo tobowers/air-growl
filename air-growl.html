@@ -15,12 +15,12 @@ window.htmlLoader.addEventListener(window.runtime.flash.events.HTMLUncaughtScrip
 </script>
 <script src="javascripts/aliases.js"></script>
 
+<script>
 window.AIRIntrospectorConfig = new Object();
 AIRIntrospectorConfig.wrapColumns = 100;
 AIRIntrospectorConfig.debuggerKey = 118;
-
-<script src="javascript/AIRIntrospector.js" type="text/JavaScript"></script>
-
+</script>
+<script src="javascripts/AIRIntrospector.js" type="text/JavaScript"></script>
 
 <script src="javascripts/prototype.js" type="text/JavaScript"></script>
 <script src="javascripts/constants.js" type="text/JavaScript"></script>
@@ -29,7 +29,13 @@ AIRIntrospectorConfig.debuggerKey = 118;
 <script src="javascripts/mvc/js_controller.js" type="text/JavaScript"></script>
 <script src="javascripts/mvc/js_template.js" type="text/JavaScript"></script>
 
+<script src="javascripts/air_growl.js" type="text/JavaScript"></script>
+<script src="javascripts/window.js" type="text/JavaScript"></script>
 
+
+<script>
+  AirGrowl.log('hi');
+</script>
 
 </head>
 <body class="air-growl mbx">

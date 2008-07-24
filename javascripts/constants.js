@@ -5,3 +5,7 @@ if (!("AirGrowl" in window)) {
 
 
 AirGrowl.cssNamespace = "air-growl";
+
+AirGrowl.log = function (txt) {
+    air.Introspector.Console.log(txt);
+}
