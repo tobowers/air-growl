@@ -51,6 +51,11 @@
  *    opts = optional object with which to extend the event that is fired
  *--------------------------------------------------------------------------*/
   
+if (!("MBX" in window)) {
+    /** @namespace */
+    MBX = {};
+}
+  
 MBX.EventHandler = (function () {
     //private functions below
     // all the standard events we want to listen to on document.
