@@ -13,7 +13,7 @@ AirGrowl.MessageController = MBX.JsController.create("Message", {
             content.appendChild(MBX.JsTemplate.render('message', message));
         };
         
-        var win = AirGrowl.Window.launch();
+        var win = AirGrowl.Window.create().get('nativeWindow');
         win.addEventListener(air.Event.COMPLETE, populateWindow);
         AirGrowl.log(win);
         AirGrowl.log(win.loaded);
