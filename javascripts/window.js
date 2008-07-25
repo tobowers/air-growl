@@ -10,20 +10,16 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
             width: 300,
             height: 125,
             type: "native",
-            ready: false
+            ready: false,
+            open: false
         },
-        afterCreate: function () {
-            var markAsReady = function () {
-                this.set('ready', true);
+        setContent: function (content) {
+            if (Object.isElement(content)) {
+                this.set('content', content);
+            } else {
+                var el = new Element("div").update(content);
+                this.set('content', el);
             }
-            
-            this.set('open', true);
-            this.set('nativeWindow', MBX.JsTemplate.render("window_" + this.get('type'), this));
-            this.get('nativeWindow').addEventListener(air.Event.COMPLETE, markAsReady.bind(this));
-        },
-        updateContent: function () {
-            var content = this.get('nativeWindow').window.document.getElementById("content");
-            content.appendChild(this.get('content'));
         }
     }
 });

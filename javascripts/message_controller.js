@@ -5,7 +5,7 @@ AirGrowl.MessageController = MBX.JsController.create("Message", {
         this.renderNothing = true;
         
         var win = AirGrowl.Window.create();
-        win.set('content', MBX.JsTemplate.render('message', message));
+        win.setContent(MBX.JsTemplate.render('message', message));
         message.set('window', win);
         win.set('message', message);
     }
