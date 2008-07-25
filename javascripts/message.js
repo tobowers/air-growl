@@ -1,3 +1,1 @@
-AirGrowl.Message = MBX.JsModel.create("Message", {
-    
-});
+AirGrowl.Message = MBX.JsModel.create("Message");
