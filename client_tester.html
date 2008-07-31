@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Air Growl</title>
+<script type="text/javascript">//<[[CDATA[
+// Handle uncaught exceptions in JS
+function onScriptException(event) {
+	var msg = "";
+	for (var i = 0; i < event.stackTrace.length; i++) 
+		msg += event.stackTrace[i].sourceURL + ":" + event.stackTrace[i].line + " " + event.stackTrace[i].functionName + "\n";
+	alert(event.exceptionValue + "\n" + msg);
+}
+window.htmlLoader.addEventListener(window.runtime.flash.events.HTMLUncaughtScriptExceptionEvent.UNCAUGHT_SCRIPT_EXCEPTION, onScriptException);
+
+//]]>
+</script>
+<script src="javascripts/aliases.js"></script>
+
+<script>
+window.AIRIntrospectorConfig = new Object();
+AIRIntrospectorConfig.wrapColumns = 100;
+AIRIntrospectorConfig.debuggerKey = 118;
+</script>
+<script src="javascripts/AIRIntrospector.js" type="text/JavaScript"></script>
+
+
+<script>
+  var lc = new air.LocalConnection();
+  lc.send("AirGrowl", "growl", "hi!");
+
+</script>
+
+</head>
+<body class="air-growl mbx">
+
+</body>
+</html>

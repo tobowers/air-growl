@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <application xmlns="http://ns.adobe.com/air/application/1.1">
-    <id>com.jumpcanopy.airGrowl</id>
+    <id>com.air-growl.client-tester</id>
     <version>0.1</version>
     <name>Air Growl</name>
     <filename>AirGrowl</filename>
     <initialWindow>
-        <content>air-growl.html</content>
-        <visible>false</visible>
+        <content>client_tester.html</content>
+        <visible>true</visible>
         <resizable>true</resizable>
         <width>300</width>
         <height>200</height>

@@ -5,7 +5,6 @@ AirGrowl.WindowController = MBX.JsController.create("WindowController", {
         var markAsReady = function () {
             win.set('ready', true);
         }
-        console.log('opening native window');
         win.set('open', true);
         win.set('nativeWindow', MBX.JsTemplate.render("window_" + win.get('type'), win));
         win.get('nativeWindow').addEventListener(air.Event.COMPLETE, markAsReady);
