@@ -103,7 +103,7 @@ MBX.JsTemplate = (function () {
         }
     };
     
-    MBX.EventHandler.subscribe(MBX.cssNamespace, "domReady", publicObj.fetchPreRenderedTemplates);
+    MBX.EventHandler.onDomReady(publicObj.fetchPreRenderedTemplates);
     
     return publicObj;
 })();

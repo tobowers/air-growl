@@ -6,6 +6,8 @@ if (!("MBX" in window)) {
 /**
     Create and extend controllers
     @namespace
+    @requires MBX.JsModel
+    @requires MBX.EventHandler
 */
 MBX.JsController = (function () {
     /**
@@ -50,7 +52,7 @@ MBX.JsController = (function () {
         }
         controllerCache[name] = this;
         
-        MBX.EventHandler.fireCustom(document.body, publicObj.Event.newController, {
+        MBX.EventHandler.fireCustom(MBX, publicObj.Event.newController, {
             object: this
         });
     };
@@ -241,9 +243,9 @@ MBX.JsController = (function () {
             var destroyEvent = this.model.Event.destroyInstance;
 
             this.eventSubscriptions = [];
-            this.eventSubscriptions.push(MBX.EventHandler.subscribe(MBX.cssNamespace, changeEvent, this._onInstanceChange.bind(this)));
-            this.eventSubscriptions.push(MBX.EventHandler.subscribe(MBX.cssNamespace, newEvent, this._onInstanceCreate.bind(this)));
-            this.eventSubscriptions.push(MBX.EventHandler.subscribe(MBX.cssNamespace, destroyEvent, this._onInstanceDestroy.bind(this)));
+            this.eventSubscriptions.push(MBX.EventHandler.subscribe(MBX, changeEvent, this._onInstanceChange.bind(this)));
+            this.eventSubscriptions.push(MBX.EventHandler.subscribe(MBX, newEvent, this._onInstanceCreate.bind(this)));
+            this.eventSubscriptions.push(MBX.EventHandler.subscribe(MBX, destroyEvent, this._onInstanceDestroy.bind(this)));
         },
         
         /**
@@ -261,7 +263,7 @@ MBX.JsController = (function () {
     };
     
     /**
-        This is mostly used internally and is fired on document.body everytime a controller is created
+        This is mostly used internally and is fired on MBX everytime a controller is created
         @memberOf MBX.JsController
     */
     publicObj.Event = {

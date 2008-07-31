@@ -16,7 +16,7 @@ if (!("MBX" in window)) {
 
 /** 
     use this as a more convienient (sometimes) method instead of .prototype.blah.prototype chaining.  It tends
-    to be a *real* javascript way of sub-classing
+    to be a real javascript way of sub-classing
     
     @parm {Object} o the original object
     @returns a new object with the original object as a prototype
@@ -69,7 +69,7 @@ MBX.JsModel = (function () {
             }
             this.attributes[key] = value;
             if (changed) {
-                MBX.EventHandler.fireCustom(document.body, this.parentClass.Event.changeInstance, {
+                MBX.EventHandler.fireCustom(MBX, this.parentClass.Event.changeInstance, {
                     object: this,
                     key: key
                 });
@@ -119,7 +119,7 @@ MBX.JsModel = (function () {
         */
         destroy: function () {
             delete this.parentClass.instanceCache[this.primaryKey()];
-            MBX.EventHandler.fireCustom(document.body, this.parentClass.Event.destroyInstance, { object: this });
+            MBX.EventHandler.fireCustom(MBX, this.parentClass.Event.destroyInstance, { object: this });
         },
         /** @private */
         _createGUID: function () {
@@ -195,7 +195,7 @@ MBX.JsModel = (function () {
         
         modelCache[name] = this;
         
-        MBX.EventHandler.fireCustom(document.body, "new_model", {
+        MBX.EventHandler.fireCustom(MBX, "new_model", {
             object: this
         });
     };
@@ -204,6 +204,7 @@ MBX.JsModel = (function () {
         /**
             Create an instance of the model
             @param {Object} attrs attributes you want the new instance to have
+            @returns JsModel#instance
             @example
               MyModel = MBX.JsModel.create("MyModel");
               var instance = MyModel.create({
@@ -225,7 +226,7 @@ MBX.JsModel = (function () {
                 obj._createGUID();
                 this.cacheInstance(obj);
                 obj.errors = null;
-                MBX.EventHandler.fireCustom(document.body, this.Event.newInstance, {
+                MBX.EventHandler.fireCustom(MBX, this.Event.newInstance, {
                     object: obj
                 });
                 if (typeof obj.afterCreate == "function") {
@@ -261,10 +262,10 @@ MBX.JsModel = (function () {
         extendInstances: function (attrs) {
             /** @default {} */
             attrs = attrs || {};
-            Object.extend(this.JsModelInstance.prototype, attrs);
+            Object.extend(this.prototypeObject, attrs);
         },
         
-        /** store the instance into the cache
+        /** store the instance into the cache. this is mostly used internally
             @private
         */
         cacheInstance: function (instance) {
@@ -311,7 +312,8 @@ MBX.JsModel = (function () {
             }
         },
         
-        /** return the number of instances that are in this model */
+        /** Gives back the number of cached instances stored in this model
+            @returns {number} number of instances   */
         count: function () {
             return this.findAll().length;
         }
@@ -337,7 +339,6 @@ MBX.JsModel = (function () {
     publicObj.create = function (name, opts) {
         return new JsModel(name, opts);
     };
-    
     
     /**
        Used internally to find the next GUID
