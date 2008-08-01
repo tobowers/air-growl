@@ -9,10 +9,11 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
         defaults: {
             width: 300,
             height: 125,
-            type: "native",
+            type: "default",
             ready: false,
             open: false
         },
+        
         setContent: function (content) {
             if (Object.isElement(content)) {
                 this.set('content', content);
@@ -20,6 +21,16 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
                 var el = new Element("div").update(content);
                 this.set('content', el);
             }
+        },
+        
+        close: function () {
+            this.get("nativeWindow").close();
+            this.set("open", false);
+        },
+        
+        reopen: function () {
+            nativeWindow.activate();
+            this.set("open", true);
         }
     }
 });

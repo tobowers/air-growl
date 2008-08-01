@@ -11,15 +11,23 @@ function onScriptException(event) {
 }
 window.htmlLoader.addEventListener(window.runtime.flash.events.HTMLUncaughtScriptExceptionEvent.UNCAUGHT_SCRIPT_EXCEPTION, onScriptException);
 
+AirGrowl = {};
 //]]>
 </script>
-
+<script src="javascripts/aliases.js"></script>
 <script src="javascripts/prototype.js"></script>
 <script src="javascripts/constants.js"></script>
 <script src="javascripts/event_handler.js"></script>
+<script>
+  MBX.EventHandler.subscribe("#close", "click", function (evt) {
+      Event.stop(evt);
+      AirGrowl.windowModelInstance.close();
+  });
+</script>
 
 </head>
 <body class="air-growl mbx">
+  <a href="#" id="close">close</a>
   <div id="content"></div>
 </body>
 </html>
