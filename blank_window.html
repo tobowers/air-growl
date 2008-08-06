@@ -27,10 +27,12 @@ AirGrowl = {};
   MBX.EventHandler.onDomReady(function () {
     document.body.observe("mouseover", function (evt) {
         $(document.body).addClassName("active");
+        AirGrowl.windowModelInstance.mouseover();
     });
     
     document.body.observe("mouseout", function (evt) {
         $(document.body).removeClassName("active");
+        AirGrowl.windowModelInstance.mouseout();
     });
   });
 

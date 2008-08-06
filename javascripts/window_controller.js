@@ -27,6 +27,7 @@ AirGrowl.WindowController = MBX.JsController.create("WindowController", {
         
         var content = win.get('jsWindow').document.getElementById("content");
         content.appendChild(win.get('content'));
+        win.startTimer();
     },
     
     loadWindowStyles: function (win) {
@@ -58,6 +59,14 @@ AirGrowl.WindowController = MBX.JsController.create("WindowController", {
         } else {
             if (key == "content" && !win.get('nativeWindow')) {
                 this.openNativeWindow(win);
+            }
+        }
+        
+        if (key == "focused") {
+            if (win.get('focused')) {
+                win.stopTimer();
+            } else {
+                win.startTimer();
             }
         }
     },

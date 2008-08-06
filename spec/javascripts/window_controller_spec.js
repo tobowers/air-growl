@@ -38,7 +38,7 @@ Screw.Unit(function() {
                     }
                 });
                 
-                win.set('nativeWindow')
+                //win.set('nativeWindow', window);
                 
             });
             

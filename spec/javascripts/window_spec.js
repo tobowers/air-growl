@@ -23,6 +23,12 @@ Screw.Unit(function() {
             expect(typeof AirGrowl.Window.screenRight).to(equal, 'function');
         });
         
+        it("should properly send open windows", function () {
+            var win = AirGrowl.Window.create();
+            win.set("open", true);
+            expect(AirGrowl.Window.openWindows()[0]).to(equal, win);
+        });
+        
         describe('instances', function () {
             var win;
             
@@ -30,10 +36,10 @@ Screw.Unit(function() {
                 win = AirGrowl.Window.create();
             });
             
-            it('should have the proper defauls', function () {
+            it('should have the proper defaults', function () {
                 expect(win.get("width")).to(equal, 300);
                 expect(win.get("height")).to(equal, 125);
-                expect(win.get("type")).to(equal, "native");
+                expect(win.get("type")).to(equal, "default");
                 expect(win.get("ready")).to(be_false);
                 expect(win.get("open")).to(be_false);
             });
