@@ -3,3 +3,15 @@
   -webkit-border-radius: 5px;
   padding: 2em;
 }
+
+#close {
+  display: none;
+}
+
+body.active #close {
+  display: block;
+}
+
+body {
+  margin: 1em;
+}

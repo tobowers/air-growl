@@ -23,10 +23,22 @@ AirGrowl = {};
       Event.stop(evt);
       AirGrowl.windowModelInstance.close();
   });
+  
+  MBX.EventHandler.onDomReady(function () {
+    document.body.observe("mouseover", function (evt) {
+        $(document.body).addClassName("active");
+    });
+    
+    document.body.observe("mouseout", function (evt) {
+        $(document.body).removeClassName("active");
+    });
+  });
+
+  
 </script>
 
 </head>
-<body class="air-growl mbx">
+<body class="air-growl">
   <a href="#" id="close">close</a>
   <div id="content"></div>
 </body>
