@@ -53,10 +53,37 @@ Screw.Unit(function() {
                 expect(templateArgs.obj).to(equal, win);
             });
             
-            it("should add the content to the window when the window becomes available", function () {
-                win.setContent('some content');
-                win.set('ready', true);
-                expect($('content').down('div').innerHTML).to(equal, 'some content');
+            describe("adding content", function () {
+                before(function () {
+                    win.setContent('some content');
+                    win.set('ready', true);
+                });              
+                
+                it("should add the content to the window when the window becomes available", function () {
+                    expect($('content').down('div').innerHTML).to(equal, 'some content');
+                });
+                
+                it("should start the close countdown", function () {
+                    expect(typeof win.get("timer")).to(equal, "number");
+                });
+                
+            });
+
+            
+            describe("focusing and unfocusing a window", function () {
+                before(function () {
+                    win.set("focused", true);
+                });
+                
+                it("should clear the timer when it's focused", function () {
+                    expect(win.get('timer')).to(be_null);
+                });
+                
+                it("should start the timer when it's not focused", function () {
+                    win.set("focused", false);
+                    expect(typeof win.get("timer")).to(equal, "number");
+                });
+
             });
             
         });

@@ -68,6 +68,7 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
         stopTimer: function () {
             if (this.get("timer")) {
                 clearTimeout(this.get('timer'));
+                this.set("timer", null);
             }
         }
     }
