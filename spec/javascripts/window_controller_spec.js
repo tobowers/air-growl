@@ -33,12 +33,13 @@ Screw.Unit(function() {
                                         return $("content");
                                     }
                                 }
-                            }
+                            },
+                            close: function () {}
                         }
                     }
                 });
                 
-                //win.set('nativeWindow', window);
+                win.set('jsWindow', window);
                 
             });
             

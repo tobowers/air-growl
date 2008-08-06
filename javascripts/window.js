@@ -2,9 +2,11 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
     screenRight: function () {
         return air.Screen.mainScreen.bounds.width;
     },
+    
     screenTop: function () {
         return air.Screen.mainScreen.bounds.height;
     },
+    
     openWindows: function () {
         var instanceArray = [];
         var inst;

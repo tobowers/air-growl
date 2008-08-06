@@ -52,9 +52,9 @@ Screw.Unit(function() {
                });
                
                it("should just use an HTML element if that's passed in ", function () {
-                  var el = new Element("p");
+                  var el = new Element("p", {id: 'thisOne'});
                   win.setContent(el);
-                  expect(win.get('content')).to(equal, el); 
+                  expect(win.get('content').id).to(equal, el.id); 
                });
                
             });
