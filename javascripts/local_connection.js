@@ -8,7 +8,8 @@ AirGrowl.LocalConnection = (function () {
     };
     
     var lc = new air.LocalConnection();
-    lc.connect("AirGrowl");
+    lc.connect("_AirGrowl");
+    lc.allowDomain("*");
     lc.client = self;
     
     AirGrowl.log(lc);
