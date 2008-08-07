@@ -9,6 +9,14 @@ air = {
                   console.log(txt);
               }
           }
+      },
+      Screen: {
+          mainScreen: {
+              bounds: {
+                  height: 1000,
+                  width: 1000
+              }
+          }
       }
     }
 };

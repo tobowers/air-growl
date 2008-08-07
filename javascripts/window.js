@@ -1,9 +1,10 @@
 AirGrowl.Window = MBX.JsModel.create("Window", {
+    
     screenRight: function () {
         return air.Screen.mainScreen.bounds.width;
     },
     
-    screenTop: function () {
+    screenHeight: function () {
         return air.Screen.mainScreen.bounds.height;
     },
     
@@ -18,15 +19,28 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
         return instanceArray;
     },
     
+    lowestOpenWindow: function () {
+        var locationArray = $H(this.instanceCache).values().sortBy(function (win) {
+            return win.get("yLocation");
+        });
+        return locationArray.pop();
+    },
+    
+    windowHeight: 125,
+    
     instanceMethods: {
         defaults: {
             width: 300,
-            height: 125,
             type: "default",
             ready: false,
             open: false,
             focused: false,
-            timeout: 4000
+            timeout: 4000,
+            yLocation: 25
+        },
+        
+        afterCreate: function () {
+            this.set('height', this.parentClass.windowHeight);
         },
         
         setContent: function (content) {

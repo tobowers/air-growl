@@ -8,11 +8,6 @@ Screw.Unit(function() {
             expect(AirGrowl.WindowController.model).to(equal, AirGrowl.Window);
         });
         
-        it("should render nothing on create", function () {            
-            var win = AirGrowl.Window.create();
-            expect(AirGrowl.WindowController.renderNothing).to(be_true);
-        });
-        
         describe("adding content to a window", function () {
             var win;
             var templateArgs;
@@ -45,7 +40,7 @@ Screw.Unit(function() {
             
             after(function () {
                 win.destroy();
-            }); 
+            });
             
             it("should render a window when content is added", function () {
                 win.set('content', 'some content');
@@ -84,6 +79,25 @@ Screw.Unit(function() {
                     expect(typeof win.get("timer")).to(equal, "number");
                 });
 
+            });
+            
+            
+            
+            describe("the second window", function () {
+                var secondWindow;
+                before(function () {
+                    secondWindow = AirGrowl.Window.create();
+                    secondWindow.set("jsWindow", window);
+                });
+                
+                after(function () {
+                    secondWindow.destroy();
+                });
+                
+                it("should open in the second position", function () {
+                    expect(secondWindow.get("yLocation")).to(equal, 25 + win.get('height') + 25);
+                });
+                
             });
             
         });

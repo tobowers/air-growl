@@ -18,15 +18,32 @@ Screw.Unit(function() {
             });
         });
         
-        it("should respond to screenTop and screenRight", function () {
-            expect(typeof AirGrowl.Window.screenTop).to(equal, 'function');
+        it("should respond to screenHeight and screenRight", function () {
+            expect(typeof AirGrowl.Window.screenHeight).to(equal, 'function');
             expect(typeof AirGrowl.Window.screenRight).to(equal, 'function');
         });
         
         it("should properly send open windows", function () {
+            expect(AirGrowl.Window.openWindows().length).to(equal, 0);
+            
             var win = AirGrowl.Window.create();
             win.set("open", true);
+            
             expect(AirGrowl.Window.openWindows()[0]).to(equal, win);
+            
+            win.destroy();
+        });
+        
+        it("should return the lowest window", function () {
+            var win = AirGrowl.Window.create();
+            win.set("yLocation", 25);
+            var secondWin = AirGrowl.Window.create();
+            secondWin.set("yLocation", 50);    
+                    
+            expect(AirGrowl.Window.lowestOpenWindow()).to(equal, secondWin);
+            
+            win.destroy();
+            secondWin.destroy();
         });
         
         describe('instances', function () {

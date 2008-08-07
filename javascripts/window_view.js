@@ -7,7 +7,7 @@ AirGrowl.WindowView = (function () {
         options.systemChrome = air.NativeWindowSystemChrome.STANDARD;
         options.type = air.NativeWindowType.NORMAL;
 
-        var windowBounds = new air.Rectangle((MBX.Window.screenRight() - win.get('width') - 10), 25, win.get('width'), win.get('height'));
+        var windowBounds = new air.Rectangle((MBX.Window.screenRight() - win.get('width') - 10), win.get('yLocation'), win.get('width'), win.get('height'));
         newHTMLLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
         newHTMLLoader.load(new air.URLRequest("blank_window.html"));
         return newHTMLLoader;
@@ -19,7 +19,7 @@ AirGrowl.WindowView = (function () {
         options.systemChrome = "none";
         options.type = air.NativeWindowType.LIGHTWEIGHT;
         
-        var windowBounds = new air.Rectangle((MBX.Window.screenRight() - win.get('width') - 10), 25, win.get('width'), win.get('height'));
+        var windowBounds = new air.Rectangle((MBX.Window.screenRight() - win.get('width') - 10), win.get('yLocation'), win.get('width'), win.get('height'));
         newHTMLLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
         newHTMLLoader.load(new air.URLRequest("blank_window.html"));
         newHTMLLoader.paintsDefaultBackground = false;

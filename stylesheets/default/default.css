@@ -1,5 +1,7 @@
 #content {
-  background: blue;
+  background: black;
+  opacity: 0.8;
+  color: white;
   -webkit-border-radius: 5px;
   padding: 2em;
 }

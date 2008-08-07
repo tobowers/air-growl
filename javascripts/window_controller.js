@@ -1,5 +1,6 @@
 AirGrowl.WindowController = MBX.JsController.create("WindowController", {
     model: AirGrowl.Window,
+    windowQueue: [],
     
     openNativeWindow: function (win) {
         var markAsReady = function () {
@@ -68,6 +69,12 @@ AirGrowl.WindowController = MBX.JsController.create("WindowController", {
             } else {
                 win.startTimer();
             }
+        }
+    },
+    
+    onInstanceDestroy: function (win) {
+        if (win.get("slot")) {
+            win.get("slot").destroy();
         }
     },
     
