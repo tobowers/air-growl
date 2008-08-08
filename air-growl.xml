@@ -7,7 +7,7 @@
     <initialWindow>
         <content>air-growl.html</content>
         <visible>false</visible>
-        <resizable>true</resizable>
+        <resizable>false</resizable>
         <width>300</width>
         <height>200</height>
     </initialWindow>

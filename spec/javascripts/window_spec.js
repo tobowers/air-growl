@@ -53,6 +53,10 @@ Screw.Unit(function() {
                 win = AirGrowl.Window.create();
             });
             
+            after(function () {
+                win.destroy();
+            })
+            
             it('should have the proper defaults', function () {
                 expect(win.get("width")).to(equal, 300);
                 expect(win.get("height")).to(equal, 125);

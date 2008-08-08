@@ -15,6 +15,7 @@ Screw.Unit(function() {
             });
         });
         after(function () {
+            win.destroy();
             slot.destroy();
             AirGrowl.WindowSlot.slots = null;
         });

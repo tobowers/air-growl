@@ -59,7 +59,18 @@ AirGrowl.WindowController = MBX.JsController.create("WindowController", {
             this.loadContentIntoWindow(win);
         } else {
             if (key == "content" && !win.get('nativeWindow')) {
-                this.openNativeWindow(win);
+                var nextSlot = AirGrowl.WindowSlot.nextSlot();
+                AirGrowl.log('testing');
+                AirGrowl.log(nextSlot);
+                if (typeof nextSlot == 'number') {
+                    AirGrowl.WindowSlot.create({
+                        'slotIndex': nextSlot.toString(),
+                        'win': win
+                    });
+                    this.openNativeWindow(win);
+                } else {
+                    AirGrowl.log("no spots now");
+                }
             }
         }
         
