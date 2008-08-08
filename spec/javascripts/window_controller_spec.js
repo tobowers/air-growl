@@ -105,6 +105,33 @@ Screw.Unit(function() {
                 
             });
             
+            describe ("when no window slot is available", function () {
+                var secondWindow;
+                before(function () {
+                    win.setContent('some content');
+                    win.set('ready', true);
+                    
+                    TH.Mock.obj("AirGrowl.WindowSlot", {
+                        nextSlot: function () {
+                            return null;
+                        }
+                    });
+                
+                    secondWindow = AirGrowl.Window.create();
+                    secondWindow.set("jsWindow", window);
+                    secondWindow.setContent('some content');
+                });
+                
+                after(function () {
+                    secondWindow.destroy();
+                });
+                
+                it ("should add the window to the window slot queue", function () {
+                    expect(AirGrowl.WindowSlot.windowQueue[0]).to(equal, secondWindow);
+                });
+                
+            });
+            
         });
         
         

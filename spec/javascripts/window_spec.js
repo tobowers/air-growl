@@ -59,7 +59,7 @@ Screw.Unit(function() {
             
             it('should have the proper defaults', function () {
                 expect(win.get("width")).to(equal, 300);
-                expect(typeof win.get("height")).to(equal, 100);
+                expect(typeof win.get("height")).to(equal, 'number');
                 expect(win.get("type")).to(equal, "default");
                 expect(win.get("ready")).to(be_false);
                 expect(win.get("open")).to(be_false);

@@ -1,5 +1,7 @@
 AirGrowl.WindowSlot = MBX.JsModel.create("WindowSlot", {
     primaryKey: 'slotIndex',
+    windowQueue: [],
+    
 
     numberOfSlotsAvailable: function () {
         var count = 0;

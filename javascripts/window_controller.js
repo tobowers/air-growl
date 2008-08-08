@@ -1,25 +1,5 @@
 AirGrowl.WindowController = MBX.JsController.create("WindowController", {
     model: AirGrowl.Window,
-    windowQueue: [],
-    
-    openNativeWindow: function (win) {
-        var markAsReady = function () {
-            AirGrowl.log('markAsReady called');
-            win.get('nativeWindow').removeEventListener(air.Event.COMPLETE, markAsReady);
-            AirGrowl.log('setting js window');
-            win.set('jsWindow', win.get('nativeWindow').window);
-            AirGrowl.log('setting native window');
-            
-            win.set('nativeWindow', win.get('jsWindow').nativeWindow);
-            AirGrowl.log('setting always in front');
-            
-            win.get('nativeWindow').alwaysInFront = true;
-            win.set('ready', true);
-        }
-        win.set('open', true);
-        win.set('nativeWindow', MBX.JsTemplate.render("window_" + win.get('type'), win));
-        win.get('nativeWindow').addEventListener(air.Event.COMPLETE, markAsReady);
-    },
     
     loadContentIntoWindow: function (win) {
         if (!(win.get('content')) || !(win.get('nativeWindow'))) {
@@ -48,18 +28,15 @@ AirGrowl.WindowController = MBX.JsController.create("WindowController", {
     
     obtainWindowSlotAndOpenWindow: function (win) {
         var nextSlot = AirGrowl.WindowSlot.nextSlot();
-        AirGrowl.log('testing');
-        AirGrowl.log(nextSlot);
         if (typeof nextSlot == 'number') {
             var slot = AirGrowl.WindowSlot.create({
                 'slotIndex': nextSlot.toString(),
                 'win': win
             });
             win.set("yLocation", slot.yLocation());
-            //AirGrowl.log("Ylocation from controller: " + win.get("yLocation"))
-            this.openNativeWindow(win);
+            win.openNativeWindow();
         } else {
-            AirGrowl.log("no spots now");
+            AirGrowl.WindowSlot.windowQueue.push(win);
         }
     },
     
