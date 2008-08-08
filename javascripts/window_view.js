@@ -14,6 +14,7 @@ AirGrowl.WindowView = (function () {
     };
     
     self.customWindow = function (win) {
+        AirGrowl.log("template: yLocation = " + win.get("yLocation"));
         var options = new air.NativeWindowInitOptions();
         options.transparent = true;
         options.systemChrome = "none";

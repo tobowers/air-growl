@@ -30,6 +30,7 @@ AirGrowl.WindowSlot = MBX.JsModel.create("WindowSlot", {
                  break;
             }
         }
+        AirGrowl.log('returning next slot as: ' + slotIndex);
         return slotIndex;
     },
     
@@ -56,7 +57,7 @@ AirGrowl.WindowSlot = MBX.JsModel.create("WindowSlot", {
         
         yLocation: function () {
             var slot = new Number(this.primaryKey());
-            return slot * AirGrowl.Window.windowHeight;
+            return slot * AirGrowl.Window.windowHeight + 25;
         }
     
     }

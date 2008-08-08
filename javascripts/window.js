@@ -26,7 +26,7 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
         return locationArray.pop();
     },
     
-    windowHeight: 125,
+    windowHeight: 100,
     
     instanceMethods: {
         defaults: {
@@ -55,6 +55,7 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
         close: function () {
             this.get("nativeWindow").close();
             this.set("open", false);
+            this.destroy();
         },
         
         reopen: function () {

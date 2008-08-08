@@ -86,8 +86,13 @@ Screw.Unit(function() {
             describe("the second window", function () {
                 var secondWindow;
                 before(function () {
+                    win.setContent('some content');
+                    win.set('ready', true);
+                    
                     secondWindow = AirGrowl.Window.create();
                     secondWindow.set("jsWindow", window);
+                    secondWindow.setContent('some content');
+                    secondWindow.set('ready', true);
                 });
                 
                 after(function () {
@@ -95,7 +100,7 @@ Screw.Unit(function() {
                 });
                 
                 it("should open in the second position", function () {
-                    expect(secondWindow.get("yLocation")).to(equal, 25 + win.get('height') + 25);
+                    expect(secondWindow.get("yLocation")).to(equal, 25 + win.get('height'));
                 });
                 
             });
