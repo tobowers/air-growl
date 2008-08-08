@@ -6,7 +6,7 @@ AirGrowl.WindowSlotController = MBX.JsController.create("WindowSlotController", 
         if (AirGrowl.WindowSlot.windowQueue.length > 0) {
             var nextSlot = AirGrowl.WindowSlot.nextSlot();
             if (typeof nextSlot == 'number') {
-                var win = AirGrowl.WindowSlot.windowQueue.length.shift();
+                var win = AirGrowl.WindowSlot.windowQueue.shift();
                 var slot = AirGrowl.WindowSlot.create({
                     'slotIndex': nextSlot.toString(),
                     'win': win

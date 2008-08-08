@@ -123,6 +123,7 @@ Screw.Unit(function() {
                 });
                 
                 after(function () {
+                    AirGrowl.WindowSlot.windowQueue.shift();
                     secondWindow.destroy();
                 });
                 
