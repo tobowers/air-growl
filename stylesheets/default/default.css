@@ -4,10 +4,24 @@
   color: white;
   -webkit-border-radius: 5px;
   padding: 2em;
+  z-index: 1;
 }
 
 #close {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
   display: none;
+  background-image: url(close.png);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#close span {
+  display: block;
+  margin-top: 1000px;
 }
 
 body.active #close {
