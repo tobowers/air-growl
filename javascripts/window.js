@@ -52,8 +52,9 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
             }
         },
         
-        close: function () {
+        close: function () {            
             this.get("nativeWindow").close();
+            
             this.set("open", false);
             this.destroy();
         },
@@ -82,10 +83,10 @@ AirGrowl.Window = MBX.JsModel.create("Window", {
                 this.set('nativeWindow', this.get('jsWindow').nativeWindow); 
                 this.get('nativeWindow').alwaysInFront = true;
                 this.set('ready', true);
-            }
+            }.bind(this);
             this.set('open', true);
             this.set('nativeWindow', MBX.JsTemplate.render("window_" + this.get('type'), this));
-            this.get('nativeWindow').addEventListener(air.Event.COMPLETE, markAsReady.bind(this));
+            this.get('nativeWindow').addEventListener(air.Event.COMPLETE, markAsReady);
         },
         
         startTimer: function () {

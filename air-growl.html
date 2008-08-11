@@ -9,7 +9,7 @@ function onScriptException(event) {
 		msg += event.stackTrace[i].sourceURL + ":" + event.stackTrace[i].line + " " + event.stackTrace[i].functionName + "\n";
 	alert(event.exceptionValue + "\n" + msg);
 }
-window.htmlLoader.addEventListener(window.runtime.flash.events.HTMLUncaughtScriptExceptionEvent.UNCAUGHT_SCRIPT_EXCEPTION, onScriptException);
+//window.htmlLoader.addEventListener(window.runtime.flash.events.HTMLUncaughtScriptExceptionEvent.UNCAUGHT_SCRIPT_EXCEPTION, onScriptException);
 
 //]]>
 </script>
