@@ -3,6 +3,5 @@ AirGrowl.growl = (function () {
     
     
     
-    
     return publicObj;
 })();

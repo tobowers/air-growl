@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!-- mxml\AirGrowl.mxml -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="initApp();">
+<mx:Script>
+<![CDATA[
+  import flash.net.LocalConnection;  
+	import flash.events.EventDispatcher;
+	import flash.events.TimerEvent;
+	import flash.external.ExternalInterface;
+	import flash.utils.Timer;
+	import mx.controls.Alert;
+	
+  private var lc:LocalConnection = new LocalConnection();
+  
+  private function sendMessage(msg:String) : void {
+      lc.send("_AirGrowl", "growl", msg);
+  }
+
+  public function initApp() : void
+  {
+    //Alert.show("initing app...");
+    //Alert.show("we are initing!");
+  	// check if the container is able to use the External API
+  	if (ExternalInterface.available)
+  	{
+  		try
+  		{
+  			// This calls the isContainerReady() method, which in turn calls
+  			// the container to see if Flash Player has loaded and the container
+  			// is ready to receive calls from the SWF.
+  			var containerReady:Boolean = isContainerReady();
+  			if (containerReady)
+  			{
+  				// if the container is ready, register the SWF's functions
+  				setupCallbacks();
+  			}
+  			else
+  			{
+  				// If the container is not ready, set up a Timer to call the
+  				// container at 100ms intervals. Once the container responds that
+  				// it's ready, the timer will be stopped.
+  				var readyTimer:Timer = new Timer(100);
+  				readyTimer.addEventListener(TimerEvent.TIMER, timerHandler);
+  				readyTimer.start();
+  			}
+  		}
+  		catch (error:SecurityError)
+  		{
+  		    //Alert.show("A SecurityError occurred: " + error.message + "\n");
+  		    throw error;
+  		}
+  		catch (error:Error)
+  		{
+  		    //Alert.show("An Error occurred: " + error.message + "\n");
+  		    throw error;
+  		}
+  	}
+  	else
+  	{
+  		//Alert.show("External interface is not available for this container.");
+  	}
+  }
+  
+  
+  // ------- Private Methods -------
+  /**
+   * Calls the container's isReady() function, to check if the container is loaded
+   * and ready to communicate with the SWF file.
+   * @return 	Whether the container is ready to communicate with ActionScript.
+   */
+  private function isContainerReady():Boolean
+  {
+  	var result:Boolean = ExternalInterface.call("isReady");
+  	//Alert.show("container is ready: " + result);
+  	return result;
+  }
+  
+  
+  /**
+   * Registers the appropriate ActionScript functions with the container, so that
+   * they can be called, and calls the "setSWFIsReady()" function in the container
+   * which tells the container that the SWF file is ready to receive function calls.
+   */
+  private function setupCallbacks():void
+  {
+    //Alert.show("setting up callbacks");
+  	// register the SWF client functions with the container
+  	ExternalInterface.addCallback("sendMessage", sendMessage);
+  	// notify the container that the SWF is ready to be called.
+  	ExternalInterface.call("swfIsReady");
+  }
+  
+  
+  /**
+   * Handles the timer event; this function is called by the timer each
+   * time the elapsed time has been reached.
+   * The net effect is that on regular intervals this function checks
+   * to see if the container is ready to receive communication.
+   * @param event		The event object for the Timer event.
+   */
+  private function timerHandler(event:TimerEvent):void
+  {
+  	// check if the container is now ready
+  	var isReady:Boolean = isContainerReady();
+  	if (isReady)
+  	{
+  		// If the container has become ready, we don't need to check anymore,
+  		// so stop the timer.
+  		Timer(event.target).stop();
+  		// Set up the ActionScript methods that will be available to be
+  		// called by the container.
+  		setupCallbacks();
+  	}
+  }
+  
+  
+  
+]]>
+</mx:Script>
+    
+    
+    
+</mx:Application>
